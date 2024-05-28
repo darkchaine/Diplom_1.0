@@ -95,7 +95,7 @@ namespace Diplom
                         break;
 
                     default:
-                        MessageBox.Show("Неизвестная роль");
+                        MessageBox.Show("Неизвестная ролfgffgfgfggfь");
                         break;
                 }
             }
@@ -139,6 +139,11 @@ namespace Diplom
             {
                 guna2TextBox5.UseSystemPasswordChar = true;
             }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }                      
     }
