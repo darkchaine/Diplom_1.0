@@ -9,7 +9,7 @@ namespace Diplom
 {
     internal class DataBase
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-1J0PIJN;Initial Catalog=Diplom;Integrated Security=True;");
+        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-DF48OJF\SQLEXPRESS;Initial Catalog=Diplom;Integrated Security=True;");
 
         public void openConnection()
         {

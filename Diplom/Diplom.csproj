@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add_Cost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_Cost.Designer.cs">
+      <DependentUpon>Add_Cost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DiplomDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DiplomDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiplomDataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +108,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Add_Cost.resx">
+      <DependentUpon>Add_Cost.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +163,17 @@
     <None Include="DiplomDataSet2.xss">
       <DependentUpon>DiplomDataSet2.xsd</DependentUpon>
     </None>
+    <None Include="DiplomDataSet3.xsc">
+      <DependentUpon>DiplomDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DiplomDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DiplomDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DiplomDataSet3.xss">
+      <DependentUpon>DiplomDataSet3.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -180,6 +205,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DeWatermark.ai_1716395980170 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-refresh-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-eraser-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
