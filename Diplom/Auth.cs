@@ -52,11 +52,11 @@ namespace Diplom
 
             if (command.ExecuteNonQuery() == 1)
             {
-                MessageBox.Show("accaunt succesful create!");
+                MessageBox.Show("Вы успешно зарегистрировали аккаунт!");
             }
             else
             {
-                MessageBox.Show("akkaunt ne sozdan");
+                MessageBox.Show("Ошибка, проверьте введеные данных");
             }
             dataBase.closeConnection();
         }
@@ -83,6 +83,7 @@ namespace Diplom
                 switch (role)
                 {
                     case 1:
+                        MessageBox.Show("Вы успешно авторизировались!");
                         main main = new main();
                         main.Show();
                         this.Hide();
@@ -95,7 +96,7 @@ namespace Diplom
                         break;
 
                     default:
-                        MessageBox.Show("Неизвестная ролfgffgfgfggfь");
+                        MessageBox.Show("Неизвестная роль");
                         break;
                 }
             }

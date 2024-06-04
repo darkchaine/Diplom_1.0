@@ -29,6 +29,8 @@ namespace Diplom
         public main()
         {
             InitializeComponent();
+            btnDelete.Click += btnDelete_Click;
+            btnChange.Click += btnChange_Click;
         }
 
         private void CreateColumns()
@@ -37,13 +39,16 @@ namespace Diplom
             guna2DataGridView1.Columns.Add("User_Id", "Номер пользователя");
             guna2DataGridView1.Columns.Add("Category_Name", "Категория траты");
             guna2DataGridView1.Columns.Add("Cost_Summ", "Сумма траты");
-            guna2DataGridView1.Columns.Add("Cost_Date", "Дата траты");
-            guna2DataGridView1.Columns.Add("IsNew", String.Empty);
+            var dateColumn = new DataGridViewTextBoxColumn();
+            dateColumn.Name = "Cost_Date";
+            dateColumn.HeaderText = "Дата траты";
+            dateColumn.DefaultCellStyle.Format = "dd.MM.yyyy";
+            guna2DataGridView1.Columns.Add(dateColumn);
         }
 
         private void ReadSingleRow(DataGridView dgw, IDataRecord record)
         {
-            dgw.Rows.Add(record.GetInt32(0), record.GetInt32(1),record.GetString(2), record.GetInt32(3), record.GetDateTime(4), RowState.ModifiedNew);
+            dgw.Rows.Add(record.GetInt32(0), record.GetInt32(1), record.GetString(2), record.GetInt32(3), record.GetDateTime(4).ToString("dd.MM.yyyy"));
         }
 
         private void RefreshDataGrid(DataGridView dgw)
@@ -68,6 +73,8 @@ namespace Diplom
         {
             CreateColumns();
             RefreshDataGrid(guna2DataGridView1);
+            FillCategoryComboBox();
+            InitializeDataGridView();
         }
 
 
@@ -104,34 +111,22 @@ namespace Diplom
 
         private void guna2DataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            selectedRow = e.RowIndex;
-
-            if (selectedRow >= 0)
+            if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = guna2DataGridView1.Rows[selectedRow];
+                DataGridViewRow row = guna2DataGridView1.Rows[e.RowIndex];
 
-                // Убедитесь, что индексы столбцов правильные
-                if (row.Cells[0].Value != null)
-                {
-                    Tb_Cid.Text = row.Cells[0].Value.ToString(); // Первая ячейка
-                }
-                if (row.Cells[1].Value != null)
-                {
-                    Tb_Uid.Text = row.Cells[1].Value.ToString(); // Вторая ячейка
-                }
-                if (row.Cells[2].Value != null)
-                {
-                    Tb_Category.Text = row.Cells[2].Value.ToString(); // Третья ячейка
-                }
+                Tb_Cid.Text = row.Cells["Cost_Id"].Value?.ToString();
+                Tb_Uid.Text = row.Cells["User_Id"].Value?.ToString();
+                Tb_Category.Text = row.Cells["Category_Name"].Value?.ToString();
+                Tb_Summ.Text = row.Cells["Cost_Summ"].Value?.ToString();
 
-                if (row.Cells[3].Value != null)
+                if (DateTime.TryParse(row.Cells["Cost_Date"].Value?.ToString(), out DateTime date))
                 {
-                    Tb_Summ.Text = row.Cells[3].Value.ToString(); // Четвертая ячейка
+                    DatePicker.Value = date;
                 }
-
-                if (row.Cells[4].Value != null && row.Cells[4].Value is DateTime)
+                else
                 {
-                    DatePicker.Value = (DateTime)row.Cells[4].Value; // Пятая ячейка
+                    // Обработка случая, когда дата не может быть распознана
                 }
             }
         }
@@ -182,6 +177,10 @@ namespace Diplom
         {
             deleteRow();
         }
+        private void InitializeDataGridView()
+        {
+            guna2DataGridView1.ColumnHeadersHeight = 40; // Задайте необходимую высоту
+        }
 
         private void Update()
         {
@@ -207,9 +206,154 @@ namespace Diplom
             database.closeConnection(); 
         }
 
-        private void Btn_Save_Click(object sender, EventArgs e)
+
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            Update();
+            if (string.IsNullOrWhiteSpace(Tb_Uid.Text) || string.IsNullOrWhiteSpace(Tb_Category.Text) || string.IsNullOrWhiteSpace(Tb_Summ.Text))
+            {
+                MessageBox.Show("Все поля должны быть заполнены");
+                return;
+            }
+
+            string queryAddCost = "INSERT INTO Costs (User_Id, Category_Name, Cost_Summ, Cost_Date) VALUES (@UserId, @CategoryName, @CostSumm, @CostDate)";
+
+            using (SqlCommand command = new SqlCommand(queryAddCost, database.getConnection()))
+            {
+                command.Parameters.AddWithValue("@UserId", Tb_Uid.Text);
+                command.Parameters.AddWithValue("@CategoryName", Tb_Category.Text);
+                command.Parameters.AddWithValue("@CostSumm", Tb_Summ.Text);
+                command.Parameters.AddWithValue("@CostDate", DatePicker.Value);
+
+                try
+                {
+                    database.openConnection();
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Запись успешно создана!");
+                    RefreshDataGrid(guna2DataGridView1);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при создании записи: " + ex.Message);
+                }
+                finally
+                {
+                    database.closeConnection();
+                }
+            }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Tb_Uid.Text) || string.IsNullOrWhiteSpace(Tb_Category.Text) || string.IsNullOrWhiteSpace(Tb_Summ.Text))
+            {
+                MessageBox.Show("Все поля должны быть заполнены");
+                return;
+            }
+
+            string queryDeleteCost = "DELETE FROM Costs WHERE User_Id = @UserId AND Category_Name = @CategoryName AND Cost_Summ = @CostSumm AND Cost_Date = @CostDate";
+
+            using (SqlCommand command = new SqlCommand(queryDeleteCost, database.getConnection()))
+            {
+                command.Parameters.AddWithValue("@UserId", Tb_Uid.Text);
+                command.Parameters.AddWithValue("@CategoryName", Tb_Category.Text);
+                command.Parameters.AddWithValue("@CostSumm", Tb_Summ.Text);
+                command.Parameters.AddWithValue("@CostDate", DatePicker.Value);
+
+                try
+                {
+                    database.openConnection();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Запись успешно удалена");
+                        RefreshDataGrid(guna2DataGridView1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Запись не найдена");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message);
+                }
+                finally
+                {
+                    database.closeConnection();
+                }
+            }
+        }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Tb_Uid.Text) || string.IsNullOrWhiteSpace(Tb_Category.Text) || string.IsNullOrWhiteSpace(Tb_Summ.Text) || string.IsNullOrWhiteSpace(Tb_Cid.Text))
+            {
+                MessageBox.Show("Все поля должны быть заполнены");
+                return;
+            }
+
+            string queryUpdateCost = "UPDATE Costs SET User_Id = @UserId, Category_Name = @CategoryName, Cost_Summ = @CostSumm, Cost_Date = @CostDate WHERE Cost_Id = @CostId";
+
+            using (SqlCommand command = new SqlCommand(queryUpdateCost, database.getConnection()))
+            {
+                command.Parameters.AddWithValue("@CostId", Tb_Cid.Text);
+                command.Parameters.AddWithValue("@UserId", Tb_Uid.Text);
+                command.Parameters.AddWithValue("@CategoryName", Tb_Category.Text);
+                command.Parameters.AddWithValue("@CostSumm", Tb_Summ.Text);
+                command.Parameters.AddWithValue("@CostDate", DatePicker.Value);
+
+                try
+                {
+                    database.openConnection();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Запись успешно обновлена");
+                        RefreshDataGrid(guna2DataGridView1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Запись не найдена");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при обновлении записи: " + ex.Message);
+                }
+                finally
+                {
+                    database.closeConnection();
+                }
+            }
+        }
+        private void FillCategoryComboBox()
+        {
+            string queryCategories = "SELECT Category_Name FROM categories";
+
+            using (SqlCommand command = new SqlCommand(queryCategories, database.getConnection()))
+            {
+                try
+                {
+                    database.openConnection();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Tb_Category.Items.Add(reader["Category_Name"].ToString());
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при загрузке категорий: " + ex.Message);
+                }
+                finally
+                {
+                    database.closeConnection();
+                }
+            }
+        }
+
     }
 }

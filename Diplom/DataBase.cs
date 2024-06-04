@@ -4,12 +4,13 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Diplom
 {
     internal class DataBase
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-DF48OJF\SQLEXPRESS;Initial Catalog=Diplom;Integrated Security=True;");
+        SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-1J0PIJN;Initial Catalog=Diplom;Integrated Security=True;");
 
         public void openConnection()
         {
@@ -29,5 +30,28 @@ namespace Diplom
         {
             return connection;
         }
+        public string StringCon()
+        {
+            return @"Data Source=DESKTOP-1J0PIJN;Initial Catalog=Diplom;Integrated Security=True;";
+        }
+        public SqlDataAdapter queryExecute(string query)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(StringCon());
+                conn.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);  
+                adapter.SelectCommand.ExecuteNonQuery();
+                MessageBox.Show("Кайф");
+                return adapter;
+
+            }
+            catch (Exception ex)
+            {
+               MessageBox.Show("Не кайф" + ex.Message);
+                return null;
+            }
+        }
     }
+
 }
