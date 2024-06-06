@@ -42,7 +42,7 @@ namespace Diplom
             var User_Password = guna2TextBox4.Text;
             var User_Login = guna2TextBox1.Text;
             int Role_Id = 1;
-            int User_Id = 1;
+            // int User_Id = 1;
 
             string querystring = $"insert into Users(User_FIO, User_Phone, Role_Id, User_Login, User_Password) values ('{User_FIO}','{User_Phone}','{Role_Id}','{User_Login}','{User_Password}')";
 
@@ -84,7 +84,7 @@ namespace Diplom
                 {
                     case 1:
                         MessageBox.Show("Вы успешно авторизировались!");
-                        main main = new main();
+                        Main main = new Main();
                         main.Show();
                         this.Hide();
                         break;
