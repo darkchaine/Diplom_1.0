@@ -15,6 +15,7 @@ namespace Diplom
 {
     public partial class Auth : Form
     {
+        public static string UserName { get; private set; }
         DataBase dataBase = new DataBase();
         public Auth()
         {
@@ -63,14 +64,12 @@ namespace Diplom
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            
-
             var User = guna2TextBox8.Text;
             var Pass = guna2TextBox5.Text;
 
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
-            string query = $"select User_Login, User_Password, Role_Id from Users where User_Login = '{User}' and User_Password = '{Pass}'";
+            string query = $"select User_FIO, Role_Id from Users where User_Login = '{User}' and User_Password = '{Pass}'";
 
             SqlCommand command = new SqlCommand(query, dataBase.getConnection());
 
@@ -79,6 +78,9 @@ namespace Diplom
 
             if (table.Rows.Count == 1)
             {
+                // Получаем ФИО пользователя из результата запроса
+                UserName = table.Rows[0]["User_FIO"].ToString();
+
                 int role = Convert.ToInt32(table.Rows[0]["Role_Id"]);
                 switch (role)
                 {
@@ -94,16 +96,14 @@ namespace Diplom
                         admin.Show();
                         this.Hide();
                         break;
-
                     default:
                         MessageBox.Show("Неизвестная роль");
                         break;
                 }
             }
-            else {
-
+            else
+            {
                 MessageBox.Show("Логин или пароль неверны");
-            
             }
 
         }
