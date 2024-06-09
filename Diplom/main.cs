@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-
+using System.Drawing;
 namespace Diplom
 {
     public partial class Main : Form
@@ -11,14 +12,23 @@ namespace Diplom
         public Main()
         {
             InitializeComponent();
-            labelUserName.Text = "Добро пожаловать, " + Auth.UserName;
+            lblBalance.Text = "Добро пожаловать, " + Auth.UserName;
             LoadMonths();
             UpdateTotalsForCurrentMonth();
+            AdjustLabelProperties();
         }
-
+        private void AdjustLabelProperties()
+        {
+    
+            // Установка выравнивания текста
+            lblBalance.TextAlign = ContentAlignment.MiddleLeft;
+        }
         private void Main_Load(object sender, EventArgs e)
         {
             Cb_Month.SelectedIndexChanged += Cb_Month_SelectedIndexChanged;
+            decimal balance = CalculateTotalBalance(DateTime.Now.Month, DateTime.Now.Year);
+            lblBalance.Text = $"Баланс: {balance:C}";
+
         }
 
         private void LoadMonths()
@@ -57,6 +67,8 @@ namespace Diplom
 
             UpdateTotalCostsLabel(currentMonth, currentYear);
             UpdateIncomeTotalLabel(currentMonth, currentYear);
+            decimal balance = CalculateTotalBalance(currentMonth, currentYear);
+            lblBalance.Text = $"Баланс: {balance:C}";
         }
 
         private void UpdateTotalsForSelectedMonth()
@@ -68,6 +80,8 @@ namespace Diplom
 
                 UpdateTotalCostsLabel(selectedMonthId, currentYear);
                 UpdateIncomeTotalLabel(selectedMonthId, currentYear);
+                decimal balance = CalculateTotalBalance(selectedMonthId, currentYear);
+                lblBalance.Text = $"Баланс: {balance:C}";
             }
         }
 
@@ -198,6 +212,53 @@ namespace Diplom
             {
                 return Text;
             }
+        }
+
+        private decimal CalculateTotalBalance(int month, int year)
+        {
+            decimal totalProfit = 0;
+            decimal totalCosts = 0;
+
+            string profitQuery = "SELECT SUM(Profit_Summ) FROM Profit WHERE MONTH(Profit_Date) = @Month AND YEAR(Profit_Date) = @Year";
+            string costsQuery = "SELECT SUM(Cost_Summ) FROM Costs WHERE MONTH(Cost_Date) = @Month AND YEAR(Cost_Date) = @Year";
+
+            using (SqlCommand profitCommand = new SqlCommand(profitQuery, database.getConnection()))
+            using (SqlCommand costsCommand = new SqlCommand(costsQuery, database.getConnection()))
+            {
+                profitCommand.Parameters.AddWithValue("@Month", month);
+                profitCommand.Parameters.AddWithValue("@Year", year);
+                costsCommand.Parameters.AddWithValue("@Month", month);
+                costsCommand.Parameters.AddWithValue("@Year", year);
+
+                try
+                {
+                    database.openConnection();
+
+                    // Получение общего дохода
+                    var profitResult = profitCommand.ExecuteScalar();
+                    if (profitResult != DBNull.Value)
+                    {
+                        totalProfit = Convert.ToDecimal(profitResult);
+                    }
+
+                    // Получение общего расхода
+                    var costsResult = costsCommand.ExecuteScalar();
+                    if (costsResult != DBNull.Value)
+                    {
+                        totalCosts = Convert.ToDecimal(costsResult);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при расчете баланса: " + ex.Message);
+                }
+                finally
+                {
+                    database.closeConnection();
+                }
+            }
+
+            return totalProfit - totalCosts;
         }
     }
 }

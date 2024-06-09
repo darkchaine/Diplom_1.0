@@ -35,13 +35,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2CircleButton2 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.labelTotalCosts = new System.Windows.Forms.Label();
             this.totalprofit = new System.Windows.Forms.Label();
             this.Cb_Month = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.labelUserName = new System.Windows.Forms.Label();
+            this.lblBalance = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCosts = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -56,13 +56,14 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
+            this.guna2Panel1.Controls.Add(this.lblBalance);
             this.guna2Panel1.Controls.Add(this.guna2CirclePictureBox1);
             this.guna2Panel1.Controls.Add(this.label2);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.label4);
             this.guna2Panel1.Location = new System.Drawing.Point(-1, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(753, 91);
+            this.guna2Panel1.Size = new System.Drawing.Size(753, 112);
             this.guna2Panel1.TabIndex = 24;
             // 
             // guna2CirclePictureBox1
@@ -117,47 +118,11 @@
             this.label4.Text = "—";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // guna2CircleButton1
-            // 
-            this.guna2CircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(89)))), ((int)(((byte)(96)))));
-            this.guna2CircleButton1.Font = new System.Drawing.Font("Comic Sans MS", 52F);
-            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton1.Location = new System.Drawing.Point(98, 270);
-            this.guna2CircleButton1.Name = "guna2CircleButton1";
-            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton1.Size = new System.Drawing.Size(128, 128);
-            this.guna2CircleButton1.TabIndex = 28;
-            this.guna2CircleButton1.Text = "-";
-            this.guna2CircleButton1.TextFormatNoPrefix = true;
-            this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
-            // 
-            // guna2CircleButton2
-            // 
-            this.guna2CircleButton2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
-            this.guna2CircleButton2.Font = new System.Drawing.Font("Comic Sans MS", 52F);
-            this.guna2CircleButton2.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton2.Location = new System.Drawing.Point(468, 270);
-            this.guna2CircleButton2.Name = "guna2CircleButton2";
-            this.guna2CircleButton2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton2.Size = new System.Drawing.Size(128, 128);
-            this.guna2CircleButton2.TabIndex = 29;
-            this.guna2CircleButton2.Text = "+";
-            this.guna2CircleButton2.TextFormatNoPrefix = true;
-            this.guna2CircleButton2.Click += new System.EventHandler(this.guna2CircleButton2_Click);
-            // 
             // labelTotalCosts
             // 
             this.labelTotalCosts.AutoSize = true;
-            this.labelTotalCosts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(89)))), ((int)(((byte)(96)))));
-            this.labelTotalCosts.Location = new System.Drawing.Point(60, 254);
+            this.labelTotalCosts.ForeColor = System.Drawing.Color.Black;
+            this.labelTotalCosts.Location = new System.Drawing.Point(34, 386);
             this.labelTotalCosts.Name = "labelTotalCosts";
             this.labelTotalCosts.Size = new System.Drawing.Size(35, 13);
             this.labelTotalCosts.TabIndex = 30;
@@ -166,8 +131,8 @@
             // totalprofit
             // 
             this.totalprofit.AutoSize = true;
-            this.totalprofit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
-            this.totalprofit.Location = new System.Drawing.Point(428, 254);
+            this.totalprofit.ForeColor = System.Drawing.Color.Black;
+            this.totalprofit.Location = new System.Drawing.Point(387, 386);
             this.totalprofit.Name = "totalprofit";
             this.totalprofit.Size = new System.Drawing.Size(35, 13);
             this.totalprofit.TabIndex = 32;
@@ -184,30 +149,64 @@
             this.Cb_Month.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.Cb_Month.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.Cb_Month.ItemHeight = 30;
-            this.Cb_Month.Location = new System.Drawing.Point(524, 97);
+            this.Cb_Month.Location = new System.Drawing.Point(524, 134);
             this.Cb_Month.Name = "Cb_Month";
             this.Cb_Month.Size = new System.Drawing.Size(183, 36);
             this.Cb_Month.TabIndex = 33;
             // 
-            // labelUserName
+            // lblBalance
             // 
-            this.labelUserName.AutoSize = true;
-            this.labelUserName.Font = new System.Drawing.Font("Comic Sans MS", 18F);
-            this.labelUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
-            this.labelUserName.Location = new System.Drawing.Point(57, 94);
-            this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(83, 33);
-            this.labelUserName.TabIndex = 31;
-            this.labelUserName.Text = "label3";
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
+            this.lblBalance.Font = new System.Drawing.Font("Comic Sans MS", 18F);
+            this.lblBalance.ForeColor = System.Drawing.Color.White;
+            this.lblBalance.Location = new System.Drawing.Point(246, 74);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(83, 33);
+            this.lblBalance.TabIndex = 31;
+            this.lblBalance.Text = "label3";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(478, 109);
+            this.label3.Location = new System.Drawing.Point(524, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 34;
             this.label3.Text = "Месяц";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BorderRadius = 30;
+            this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
+            this.btnAdd.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(440, 325);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(159, 58);
+            this.btnAdd.TabIndex = 35;
+            this.btnAdd.Text = "Доходы";
+            // 
+            // btnCosts
+            // 
+            this.btnCosts.BackColor = System.Drawing.Color.Transparent;
+            this.btnCosts.BorderRadius = 30;
+            this.btnCosts.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCosts.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCosts.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCosts.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCosts.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(89)))), ((int)(((byte)(96)))));
+            this.btnCosts.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.btnCosts.ForeColor = System.Drawing.Color.White;
+            this.btnCosts.Location = new System.Drawing.Point(78, 325);
+            this.btnCosts.Name = "btnCosts";
+            this.btnCosts.Size = new System.Drawing.Size(159, 58);
+            this.btnCosts.TabIndex = 36;
+            this.btnCosts.Text = "Расходы";
             // 
             // Main
             // 
@@ -215,13 +214,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(245)))), ((int)(((byte)(227)))));
             this.ClientSize = new System.Drawing.Size(719, 450);
+            this.Controls.Add(this.btnCosts);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Cb_Month);
             this.Controls.Add(this.totalprofit);
-            this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.labelTotalCosts);
-            this.Controls.Add(this.guna2CircleButton2);
-            this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Main";
@@ -244,12 +242,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton2;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
         private System.Windows.Forms.Label labelTotalCosts;
         private System.Windows.Forms.Label totalprofit;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2ComboBox Cb_Month;
-        private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.Label lblBalance;
+        private Guna.UI2.WinForms.Guna2Button btnCosts;
+        private Guna.UI2.WinForms.Guna2Button btnAdd;
     }
 }
