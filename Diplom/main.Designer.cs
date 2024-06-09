@@ -190,6 +190,7 @@
             this.btnAdd.Size = new System.Drawing.Size(159, 58);
             this.btnAdd.TabIndex = 35;
             this.btnAdd.Text = "Доходы";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCosts
             // 
@@ -207,6 +208,7 @@
             this.btnCosts.Size = new System.Drawing.Size(159, 58);
             this.btnCosts.TabIndex = 36;
             this.btnCosts.Text = "Расходы";
+            this.btnCosts.Click += new System.EventHandler(this.btnCosts_Click);
             // 
             // Main
             // 

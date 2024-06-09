@@ -260,5 +260,19 @@ namespace Diplom
 
             return totalProfit - totalCosts;
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Profit costs = new Profit();
+            costs.Show();
+        }
+
+        private void btnCosts_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Costs costs = new Costs();
+            costs.Show();
+        }
     }
 }

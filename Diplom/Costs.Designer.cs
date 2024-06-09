@@ -58,12 +58,11 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.Cb_UserFIO = new Guna.UI2.WinForms.Guna2ComboBox();
             this.Tb_Category = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btnChange = new Guna.UI2.WinForms.Guna2Button();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.Tb_Cid = new Guna.UI2.WinForms.Guna2TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -74,7 +73,8 @@
             this.Tb_Search = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.Cb_UserFIO = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.Tb_Cid = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.diplomDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.costsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.costsBindingSource3)).BeginInit();
@@ -287,6 +287,22 @@
             this.guna2Panel2.Size = new System.Drawing.Size(634, 202);
             this.guna2Panel2.TabIndex = 17;
             // 
+            // Cb_UserFIO
+            // 
+            this.Cb_UserFIO.BackColor = System.Drawing.Color.Transparent;
+            this.Cb_UserFIO.BorderRadius = 7;
+            this.Cb_UserFIO.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Cb_UserFIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cb_UserFIO.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Cb_UserFIO.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Cb_UserFIO.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Cb_UserFIO.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.Cb_UserFIO.ItemHeight = 30;
+            this.Cb_UserFIO.Location = new System.Drawing.Point(115, 33);
+            this.Cb_UserFIO.Name = "Cb_UserFIO";
+            this.Cb_UserFIO.Size = new System.Drawing.Size(239, 36);
+            this.Cb_UserFIO.TabIndex = 29;
+            // 
             // Tb_Category
             // 
             this.Tb_Category.BackColor = System.Drawing.Color.Transparent;
@@ -298,7 +314,7 @@
             this.Tb_Category.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.Tb_Category.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.Tb_Category.ItemHeight = 30;
-            this.Tb_Category.Location = new System.Drawing.Point(115, 145);
+            this.Tb_Category.Location = new System.Drawing.Point(115, 133);
             this.Tb_Category.Name = "Tb_Category";
             this.Tb_Category.Size = new System.Drawing.Size(183, 36);
             this.Tb_Category.TabIndex = 28;
@@ -354,43 +370,12 @@
             this.btnAdd.Text = "Добавить";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
-            this.label9.Location = new System.Drawing.Point(64, 18);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 19);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "Трата";
-            // 
-            // Tb_Cid
-            // 
-            this.Tb_Cid.BorderRadius = 7;
-            this.Tb_Cid.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Tb_Cid.DefaultText = "";
-            this.Tb_Cid.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Tb_Cid.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Tb_Cid.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Tb_Cid.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Tb_Cid.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Tb_Cid.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Tb_Cid.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Tb_Cid.Location = new System.Drawing.Point(115, 18);
-            this.Tb_Cid.Name = "Tb_Cid";
-            this.Tb_Cid.PasswordChar = '\0';
-            this.Tb_Cid.PlaceholderText = "";
-            this.Tb_Cid.SelectedText = "";
-            this.Tb_Cid.Size = new System.Drawing.Size(183, 22);
-            this.Tb_Cid.TabIndex = 23;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
-            this.label8.Location = new System.Drawing.Point(11, 45);
+            this.label8.Location = new System.Drawing.Point(11, 33);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 19);
             this.label8.TabIndex = 22;
@@ -401,7 +386,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
-            this.label7.Location = new System.Drawing.Point(70, 114);
+            this.label7.Location = new System.Drawing.Point(70, 102);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 19);
             this.label7.TabIndex = 20;
@@ -412,7 +397,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
-            this.label6.Location = new System.Drawing.Point(58, 87);
+            this.label6.Location = new System.Drawing.Point(58, 75);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 19);
             this.label6.TabIndex = 19;
@@ -423,7 +408,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
-            this.label5.Location = new System.Drawing.Point(36, 145);
+            this.label5.Location = new System.Drawing.Point(36, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 19);
             this.label5.TabIndex = 18;
@@ -436,7 +421,7 @@
             this.DatePicker.FillColor = System.Drawing.Color.White;
             this.DatePicker.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.DatePicker.Location = new System.Drawing.Point(115, 114);
+            this.DatePicker.Location = new System.Drawing.Point(115, 102);
             this.DatePicker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DatePicker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.DatePicker.Name = "DatePicker";
@@ -456,7 +441,7 @@
             this.Tb_Summ.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Tb_Summ.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Tb_Summ.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Tb_Summ.Location = new System.Drawing.Point(115, 87);
+            this.Tb_Summ.Location = new System.Drawing.Point(115, 75);
             this.Tb_Summ.Name = "Tb_Summ";
             this.Tb_Summ.PasswordChar = '\0';
             this.Tb_Summ.PlaceholderText = "";
@@ -562,21 +547,38 @@
             this.guna2PictureBox1.TabIndex = 19;
             this.guna2PictureBox1.TabStop = false;
             // 
-            // Cb_UserFIO
+            // Tb_Cid
             // 
-            this.Cb_UserFIO.BackColor = System.Drawing.Color.Transparent;
-            this.Cb_UserFIO.BorderRadius = 7;
-            this.Cb_UserFIO.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.Cb_UserFIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cb_UserFIO.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Cb_UserFIO.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Cb_UserFIO.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.Cb_UserFIO.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.Cb_UserFIO.ItemHeight = 30;
-            this.Cb_UserFIO.Location = new System.Drawing.Point(115, 45);
-            this.Cb_UserFIO.Name = "Cb_UserFIO";
-            this.Cb_UserFIO.Size = new System.Drawing.Size(183, 36);
-            this.Cb_UserFIO.TabIndex = 29;
+            this.Tb_Cid.BorderRadius = 7;
+            this.Tb_Cid.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Tb_Cid.DefaultText = "";
+            this.Tb_Cid.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Tb_Cid.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Tb_Cid.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Tb_Cid.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Tb_Cid.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Tb_Cid.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Tb_Cid.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Tb_Cid.Location = new System.Drawing.Point(115, 18);
+            this.Tb_Cid.Name = "Tb_Cid";
+            this.Tb_Cid.PasswordChar = '\0';
+            this.Tb_Cid.PlaceholderText = "";
+            this.Tb_Cid.SelectedText = "";
+            this.Tb_Cid.Size = new System.Drawing.Size(183, 22);
+            this.Tb_Cid.TabIndex = 23;
+            this.Tb_Cid.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
+            this.label9.Location = new System.Drawing.Point(64, 18);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(45, 19);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Трата";
+            this.label9.Visible = false;
             // 
             // Costs
             // 
@@ -653,13 +655,13 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2TextBox Tb_Search;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
-        private System.Windows.Forms.Label label9;
-        private Guna.UI2.WinForms.Guna2TextBox Tb_Cid;
         private System.Windows.Forms.Label label8;
         private Guna.UI2.WinForms.Guna2Button btnChange;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private Guna.UI2.WinForms.Guna2ComboBox Tb_Category;
         private Guna.UI2.WinForms.Guna2ComboBox Cb_UserFIO;
+        private System.Windows.Forms.Label label9;
+        private Guna.UI2.WinForms.Guna2TextBox Tb_Cid;
     }
 }

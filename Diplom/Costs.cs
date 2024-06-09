@@ -129,7 +129,8 @@ namespace Diplom
         {
             dgw.Rows.Clear();
 
-            string searchString = $"SELECT * FROM Costs WHERE CONCAT(Category_Name, Cost_Summ, Cost_Date) LIKE '%" + Tb_Search.Text + "%'";
+            string searchString = $"SELECT * FROM Costs WHERE Cost_Id LIKE '%{Tb_Search.Text}%' OR User_FIO IN (SELECT User_FIO FROM Users WHERE User_FIO LIKE '%{Tb_Search.Text}%') OR Category_Name LIKE '%{Tb_Search.Text}%' OR Cost_Summ LIKE '%{Tb_Search.Text}%' OR Cost_Date LIKE '%{Tb_Search.Text}%'";
+
             SqlCommand com = new SqlCommand(searchString, database.getConnection());
             database.openConnection();
 
