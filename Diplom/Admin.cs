@@ -36,8 +36,6 @@ namespace Diplom
 
         private void Admin_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "diplomDataSet2.Costs". При необходимости она может быть перемещена или удалена.
-            this.costsTableAdapter2.Fill(this.diplomDataSet2.Costs);
 
         }
 

@@ -178,6 +178,13 @@ namespace Diplom
                 return;
             }
 
+            // Проверка на положительное значение суммы траты
+            if (!decimal.TryParse(Tb_Summ.Text, out decimal costSumm) || costSumm < 0)
+            {
+                MessageBox.Show("Сумма траты должна быть положительным числом.");
+                return;
+            }
+
             string queryAddCost = "INSERT INTO Costs (User_FIO, Category_Name, Cost_Summ, Cost_Date) VALUES (@UserFIO, @CategoryName, @CostSumm, @CostDate)";
 
             using (SqlCommand command = new SqlCommand(queryAddCost, database.getConnection()))
@@ -204,6 +211,7 @@ namespace Diplom
                 }
             }
         }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -321,7 +329,7 @@ namespace Diplom
 
         private void FillUserFIOComboBox()
         {
-            string queryUsers = "SELECT User_FIO FROM Users";
+            string queryUsers = "SELECT User_FIO FROM Users WHERE Role_Id <> 2";
 
             using (SqlCommand command = new SqlCommand(queryUsers, database.getConnection()))
             {
@@ -347,5 +355,7 @@ namespace Diplom
                 }
             }
         }
+
+
     }
 }

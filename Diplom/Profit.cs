@@ -234,7 +234,7 @@ namespace Diplom
 
         private void FillUserFIOComboBox()
         {
-            string queryUserFIO = "SELECT DISTINCT User_FIO FROM Users";
+            string queryUserFIO = "SELECT DISTINCT User_FIO FROM Users WHERE Role_Id <> 2";
 
             using (SqlCommand command = new SqlCommand(queryUserFIO, database.getConnection()))
             {
@@ -260,6 +260,7 @@ namespace Diplom
                 }
             }
         }
+
 
         private void Profit_Load(object sender, EventArgs e)
         {
@@ -317,6 +318,13 @@ namespace Diplom
                 return;
             }
 
+            // Проверка на положительное значение суммы дохода
+            if (!decimal.TryParse(Tb_Summ.Text, out decimal profitSumm) || profitSumm < 0)
+            {
+                MessageBox.Show("Сумма дохода должна быть положительным числом.");
+                return;
+            }
+
             string queryAddProfit = "INSERT INTO Profit (User_FIO, PCategory_Name, Profit_Summ, Profit_Date) VALUES (@UserFIO, @PCategoryName, @ProfitSumm, @ProfitDate)";
 
             using (SqlCommand command = new SqlCommand(queryAddProfit, database.getConnection()))
@@ -344,9 +352,15 @@ namespace Diplom
             }
         }
 
+
         private void Tb_Search_TextChanged_1(object sender, EventArgs e)
         {
             Search(guna2DataGridView1);
+        }
+
+        private void Profit_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

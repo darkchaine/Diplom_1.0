@@ -60,6 +60,7 @@
             this.guna2BorderlessForm1.BorderRadius = 30;
             this.guna2BorderlessForm1.ContainerControl = this;
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.ResizeForm = false;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // label1
@@ -102,6 +103,7 @@
             this.guna2TabControl1.TabIndex = 4;
             this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(245)))), ((int)(((byte)(227)))));
             this.guna2TabControl1.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
+
             // 
             // tabPage1
             // 
@@ -118,7 +120,7 @@
             this.tabPage1.Size = new System.Drawing.Size(357, 336);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Регистрация";
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+
             // 
             // guna2CheckBox1
             // 
@@ -323,7 +325,7 @@
             this.guna2TextBox8.SelectedText = "";
             this.guna2TextBox8.Size = new System.Drawing.Size(308, 45);
             this.guna2TextBox8.TabIndex = 7;
-            this.guna2TextBox8.TextChanged += new System.EventHandler(this.guna2TextBox8_TextChanged);
+
             // 
             // label2
             // 

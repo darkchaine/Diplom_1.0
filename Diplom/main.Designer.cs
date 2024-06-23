@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblBalance = new System.Windows.Forms.Label();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.labelTotalCosts = new System.Windows.Forms.Label();
             this.totalprofit = new System.Windows.Forms.Label();
             this.Cb_Month = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lblBalance = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.btnCosts = new Guna.UI2.WinForms.Guna2Button();
@@ -51,6 +51,7 @@
             this.guna2BorderlessForm1.BorderRadius = 20;
             this.guna2BorderlessForm1.ContainerControl = this;
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.ResizeForm = false;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // guna2Panel1
@@ -65,6 +66,18 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(753, 112);
             this.guna2Panel1.TabIndex = 24;
+            // 
+            // lblBalance
+            // 
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
+            this.lblBalance.Font = new System.Drawing.Font("Comic Sans MS", 18F);
+            this.lblBalance.ForeColor = System.Drawing.Color.White;
+            this.lblBalance.Location = new System.Drawing.Point(246, 74);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(83, 33);
+            this.lblBalance.TabIndex = 31;
+            this.lblBalance.Text = "label3";
             // 
             // guna2CirclePictureBox1
             // 
@@ -153,18 +166,6 @@
             this.Cb_Month.Name = "Cb_Month";
             this.Cb_Month.Size = new System.Drawing.Size(183, 36);
             this.Cb_Month.TabIndex = 33;
-            // 
-            // lblBalance
-            // 
-            this.lblBalance.AutoSize = true;
-            this.lblBalance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(224)))), ((int)(((byte)(170)))));
-            this.lblBalance.Font = new System.Drawing.Font("Comic Sans MS", 18F);
-            this.lblBalance.ForeColor = System.Drawing.Color.White;
-            this.lblBalance.Location = new System.Drawing.Point(246, 74);
-            this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(83, 33);
-            this.lblBalance.TabIndex = 31;
-            this.lblBalance.Text = "label3";
             // 
             // label3
             // 
