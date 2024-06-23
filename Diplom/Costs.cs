@@ -149,21 +149,44 @@ namespace Diplom
 
         private void deleteRow()
         {
-            int index = guna2DataGridView1.CurrentCell.RowIndex;
-
-            guna2DataGridView1.Rows[index].Visible = false;
-
-            if (guna2DataGridView1.Rows[index].Cells[0].Value.ToString() == string.Empty)
+            if (string.IsNullOrWhiteSpace(Tb_Cid.Text))
             {
-                guna2DataGridView1.Rows[index].Cells[5].Value = RowState.Deleted;
+                MessageBox.Show("Не выбрана трата для удаления.");
                 return;
+            }
+
+            string queryDeleteCost = "DELETE FROM Costs WHERE Cost_Id = @CostId";
+
+            using (SqlCommand command = new SqlCommand(queryDeleteCost, database.getConnection()))
+            {
+                command.Parameters.AddWithValue("@CostId", Tb_Cid.Text);
+
+                try
+                {
+                    database.openConnection();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Запись успешно удалена");
+                        RefreshDataGrid(guna2DataGridView1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Запись не найдена");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message);
+                }
+                finally
+                {
+                    database.closeConnection();
+                }
             }
         }
 
-        private void Btn_Delete_Click(object sender, EventArgs e)
-        {
-            deleteRow();
-        }
+
 
         private void InitializeDataGridView()
         {
@@ -215,44 +238,7 @@ namespace Diplom
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(Cb_UserFIO.Text) || string.IsNullOrWhiteSpace(Tb_Category.Text) || string.IsNullOrWhiteSpace(Tb_Summ.Text))
-            {
-                MessageBox.Show("Все поля должны быть заполнены");
-                return;
-            }
-
-            string queryDeleteCost = "DELETE FROM Costs WHERE User_FIO = @UserFIO AND Category_Name = @CategoryName AND Cost_Summ = @CostSumm AND Cost_Date = @CostDate";
-
-            using (SqlCommand command = new SqlCommand(queryDeleteCost, database.getConnection()))
-            {
-                command.Parameters.AddWithValue("@UserFIO", Cb_UserFIO.Text);
-                command.Parameters.AddWithValue("@CategoryName", Tb_Category.Text);
-                command.Parameters.AddWithValue("@CostSumm", Tb_Summ.Text);
-                command.Parameters.AddWithValue("@CostDate", DatePicker.Value);
-
-                try
-                {
-                    database.openConnection();
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Запись успешно удалена");
-                        RefreshDataGrid(guna2DataGridView1);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Запись не найдена");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ошибка при удалении записи: " + ex.Message);
-                }
-                finally
-                {
-                    database.closeConnection();
-                }
-            }
+            deleteRow();
         }
 
         private void btnChange_Click(object sender, EventArgs e)

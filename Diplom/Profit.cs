@@ -126,43 +126,17 @@ namespace Diplom
 
         private void deleteRow()
         {
-            int index = guna2DataGridView1.CurrentCell.RowIndex;
-
-            guna2DataGridView1.Rows[index].Visible = false;
-
-            if (guna2DataGridView1.Rows[index].Cells[0].Value.ToString() == string.Empty)
+            if (string.IsNullOrWhiteSpace(Tb_Cid.Text))
             {
-                guna2DataGridView1.Rows[index].Cells[5].Value = RowStateProfit.Deleted;
-                return;
-            }
-        }
-
-        private void Btn_Delete_Click(object sender, EventArgs e)
-        {
-            deleteRow();
-        }
-
-        private void InitializeDataGridView()
-        {
-            guna2DataGridView1.ColumnHeadersHeight = 40; // Задайте необходимую высоту
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(Cb_UserFIO.Text) || string.IsNullOrWhiteSpace(Tb_Category.Text) || string.IsNullOrWhiteSpace(Tb_Summ.Text))
-            {
-                MessageBox.Show("Все поля должны быть заполнены");
+                MessageBox.Show("Не выбран доход для удаления.");
                 return;
             }
 
-            string queryDeleteProfit = "DELETE FROM Profit WHERE User_FIO = @UserFIO AND PCategory_Name = @PCategoryName AND Profit_Summ = @ProfitSumm AND Profit_Date = @ProfitDate";
+            string queryDeleteProfit = "DELETE FROM Profit WHERE Profit_Id = @ProfitId";
 
             using (SqlCommand command = new SqlCommand(queryDeleteProfit, database.getConnection()))
             {
-                command.Parameters.AddWithValue("@UserFIO", Cb_UserFIO.Text);
-                command.Parameters.AddWithValue("@PCategoryName", Tb_Category.Text);
-                command.Parameters.AddWithValue("@ProfitSumm", Tb_Summ.Text);
-                command.Parameters.AddWithValue("@ProfitDate", DatePicker.Value);
+                command.Parameters.AddWithValue("@ProfitId", Tb_Cid.Text);
 
                 try
                 {
@@ -187,6 +161,17 @@ namespace Diplom
                     database.closeConnection();
                 }
             }
+        }
+
+
+        private void InitializeDataGridView()
+        {
+            guna2DataGridView1.ColumnHeadersHeight = 40; // Задайте необходимую высоту
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            deleteRow();
         }
 
         private void btnChange_Click(object sender, EventArgs e)
@@ -359,6 +344,11 @@ namespace Diplom
         }
 
         private void Profit_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
 
         }
